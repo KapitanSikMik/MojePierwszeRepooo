@@ -28,7 +28,7 @@ namespace Saper
                     {
                         if (board[y, x] == '*')
                         {
-
+                            DisplayBombLocations(board, displayBoard);
                             Console.WriteLine("Boom! Koniec gry.");
                             Console.ReadLine();
                             gameOver = true;
@@ -64,7 +64,23 @@ namespace Saper
 
         }
 
+        static void DisplayBombLocations(char[,] board, char[,] displayBoard)
+        {
+            Console.WriteLine("Plansza z zaznaczonymi bombami:");
 
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1); j++)
+                {
+                    if (board[i, j] == '*')
+                    {
+                        displayBoard[i, j] = '*';
+                    }
+                }
+            }
+
+            DisplayBoard(displayBoard);
+        }
        
         
 
